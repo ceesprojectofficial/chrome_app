@@ -9,7 +9,6 @@
   },
   "icons": { "16": "cees-16.png", "128": "cees-128.png" },
   "permissions":[
-  				"https://80.240.139.49/*",
-				 "cookies"
+  				"https://80.240.139.49/*"
 				 ]
 }
