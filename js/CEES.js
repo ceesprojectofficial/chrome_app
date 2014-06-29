@@ -35,4 +35,10 @@ function show_element(id){
   el.style.display = "block" ; //damos un atributo display:block que oculta el div
 }
 
+function view_element(id){
+  //se obtiene el id
+  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+  el.style.visibility = "visible" ; //damos un atributo display:block que oculta el div
+}
+
 

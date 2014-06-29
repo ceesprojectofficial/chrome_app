@@ -15,6 +15,7 @@ Function getStores.
 Retrieves the stores list available for a shop asistant.
 Require authentication token.
 */
+
 function getStores(token){
   $.ajax({
       url: getConfigValues('server_url') + getConfigValues('checkin_endpoint'),
@@ -33,15 +34,30 @@ Save the presence of a shop assistant in a store sending a POST message with the
 Require authentication token.
 */
 
-function checkin(token){
+function checkin(){
   // call to BE to retrieve clients presentes in the store selected
   // UI transiction screen in case positive response
   hide_element ('forms_stores');
   hide_element ('forms_arrivals_img_initial');
   show_element ('forms_img_banner');
   show_element ('forms_logout');
+  data = getCheckinData();
+  submitCheckin(data);
   // Render the response (client_list) on the forms_arrivals_table_customers (table)
   //By the momment just show a static table further a specific function will build dinamically the table based onthe JSON sent by the BE
+}
+
+function submitCheckin(data){
+  $.ajax({
+    url: getConfigValues('server_url') + getConfigValues('checkin_endpoint'),
+    type: 'POST',
+    data: data,
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader('Authentication', token);
+    },
+    success: checkinCallBack,
+    dataType: 'json'
+  });
 }
 
 /*
@@ -59,6 +75,14 @@ function checkout(token){
   hide_element ('forms_img_banner');
   hide_element ('forms_logout');
   hide_element ('forms_arrivals_table_customers');
+}
+
+function getCheckinData(){
+  return {"city" : $(CITY_SELECTOR).val(), "address" : $(ADDRESS_SELECTOR).val()}
+}
+
+function checkinCallBack(){
+  getArrivals();
 }
 
 /*
