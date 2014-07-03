@@ -30,10 +30,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
         return senderId;
       });*/
       //while(locked){;}
-      senderId = getSenderId();
-      var senderIds = [senderId];
-      console.log(senderId);
-      chrome.gcm.register(senderIds, registerCallback);
+      
     }
     
    });
@@ -59,10 +56,9 @@ function getProjectId(){
 }
 
 function projectCallBack(response){
-  senderId = response['data'];
-  setSenderId(senderId);
-  //console.log("EN EL CALLBACK:" + sender_Id);
-  //chrome.storage.local.set({senderId: response['data']});
+  var senderId = response['data'];
+  var senderIds = [senderId];
+  chrome.gcm.register(senderIds, registerCallback);
 }
 
 function registerCallback(registrationId) {
@@ -73,19 +69,20 @@ function registerCallback(registrationId) {
   }
 
   // Send the registration ID to your application server.
-  sendRegistrationId(function(succeed) {
+  sendRegistrationId(registrationId, function(succeed) {
     // Once the registration ID is received by your server,
     // set the flag such that register will not be invoked
     // next time when the app starts up.
-    if (succeed)
+    if (succeed){
       chrome.storage.local.set({is_registered: true});
+      console.log("ENTRO AQUI");
+    }
   });
 }
 
-function sendRegistrationId(callback) {
-  console.log("LLEGO AQUI");
-  console.log(callback);
+function sendRegistrationId(regId, callback) {
   // Send the registration ID to your application server
   // in a secure way.
+  console.log(regId);
 }
 
