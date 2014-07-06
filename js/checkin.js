@@ -115,4 +115,3 @@ function fillStoreSelectors(response){
 }
 
 $('#forms_stores_btn_submit').click(checkin);  // Adding handler to forms_stores_btn_submit button
-$('#forms_login_btn_logout').click(checkout);  // Adding handler to forms_login_btn_logout button

@@ -11,6 +11,18 @@ Description: Functions related to login process.
 // and interact with end user
 //###############################################################################
 
+
+
+function reloadApp(){
+appwindow = chrome.app.window.current();
+chrome.app.window.create('window.html', {
+  'bounds': {
+    'width': Math.round(window.screen.availWidth),
+    'height': Math.round(window.screen.availHeight)
+  }}, function(){
+        appwindow.close();
+    });
+}
 //--------------------------------------------------------------------------
 // Function hide_element
 // hide the element passed as parameter (id)
@@ -23,6 +35,12 @@ function hide_element(id){
   el.style.display = "none" ; //damos un atributo display:none que oculta el div
 }
 
+function occult_element(id){
+  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+  el.style.visibility = "hidden" ; //damos un atributo display:block que oculta el div
+
+}
+
 //--------------------------------------------------------------------------
 // Function show_element
 // show the element passed as parameter (id)
@@ -32,13 +50,17 @@ function hide_element(id){
 function show_element(id){
   //se obtiene el id
   var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.display = "block" ; //damos un atributo display:block que oculta el div
+  el.style.display = "block"; //damos un atributo display:block que oculta el div
 }
 
 function view_element(id){
   //se obtiene el id
   var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.visibility = "visible" ; //damos un atributo display:block que oculta el div
+  el.style.visibility = "visible"; //damos un atributo display:block que oculta el div
 }
 
+function clean_table(id){
+  tbody = $(id);
+  tbody.empty();
+}
 

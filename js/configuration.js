@@ -1,6 +1,6 @@
 var config = {
   //License Key
-  "license_key" : "0000000-000000-0000-0000000000",
+  "license_key" : "e8e38c68-b13c-473d-a7df-ca83d4c82727",
 
   //Server definitions
   "server_url" : "https://80.240.139.49/",
@@ -17,5 +17,5 @@ var config = {
 }
 
 function getConfigValues(key){
-  return config[key]
+  return config[key];
 }

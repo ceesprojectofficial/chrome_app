@@ -4,7 +4,8 @@ Author: Fernando Crespo Gravalos (cees.project.official@gmail.com)
 Date: 2014/06/29
 Description: Functions related to login process.
 */
-
+EMAIL_INPUT = $("#forms_login_input_email");
+PASSWORD_INPUT = $("#forms_login_input_password");
 var token = "";
 
 /*
@@ -24,8 +25,15 @@ function login(){
   });
 }
 
-function logout(token){
-
+function logout(){
+  $.ajax({
+    url: getConfigValues('server_url') + getConfigValues('login_endpoint'),
+    type: 'DELETE',
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('Authentication', token);
+    },
+  });
+  reloadApp();
 }
 
 /*
@@ -34,8 +42,8 @@ Returns login data retrieved from form (email and password) and config (MAC)
 */
 
 function getLoginData(){
-  var email = $("#forms_login_input_email").val();
-  var password = $("#forms_login_input_password").val();
+  var email = EMAIL_INPUT.val();
+  var password = PASSWORD_INPUT.val();
   var mac_address = getConfigValues("mac_address");
   return {"email" : email, "password" : password, "macAddress" : mac_address};
 }
@@ -50,7 +58,11 @@ function loginCallBack(response){
   getStores(token);
 }
 
-
+function clear(){
+  EMAIL_INPUT.val('');
+  PASSWORD_INPUT.val('');
+}
 
 $('#forms_login_btn_login').click(login);// Adding handler to forms_login_btn_submit button
-$('#forms_login_btn_clear').click(logout);// Adding handler to forms_login_btn_clear  button
+$('#forms_login_btn_logout').click(logout);  // Adding handler to forms_login_btn_logout button
+$('#forms_login_btn_clear').click(clear);// Adding handler to forms_login_btn_clear  button
