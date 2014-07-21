@@ -2,16 +2,23 @@
 File: cees.js
 Author: Carlos Vazquez (cees.project.official@gmail.com)
 Date: 2014/06/29
-Description: Functions related to login process.
+Description: Functions used to implement the transitions between the different screens of the UI. Basically this file
+contains functions to modify the visibility of html elements
 */
 
 //###############################################################################
 // CEES Functions
-// Set of functions used by UI to communicates with FE and provide information
-// and interact with end user
+// Functions used to implement the transitions between the different screens of the UI. Basically this file
+// contains functions to modify the visibility of html elements
 //###############################################################################
 
 
+//--------------------------------------------------------------------------
+// Function reloadApp
+// 
+// Requiere function to implement logout. 
+// This fuction restart the application and reinitialize all the variables
+//--------------------------------------------------------------------------
 
 function reloadApp(){
 appwindow = chrome.app.window.current();
@@ -27,17 +34,26 @@ chrome.app.window.create('window.html', {
 // Function hide_element
 // hide the element passed as parameter (id)
 // setting property display to none
+// Function required to get the screen transitions
 //--------------------------------------------------------------------------
 
 function hide_element(id){
-  //se obtiene el id
-  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.display = "none" ; //damos un atributo display:none que oculta el div
+  // Gettting id element
+  var el = document.getElementById(id); //el variable defintion
+  el.style.display = "none" ; //set el's display attribute to none
 }
 
+//--------------------------------------------------------------------------
+// Function occult_element
+// hide the element passed as parameter (id)
+// setting property visibility to hidden
+// Function required to get the screen transitions
+//--------------------------------------------------------------------------
+
 function occult_element(id){
-  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.visibility = "hidden" ; //damos un atributo display:block que oculta el div
+   // Gettting id element
+  var el = document.getElementById(id); //el variable defintion
+  el.style.visibility = "hidden" ; //set el's visibility attribute to hidden 
 
 }
 
@@ -45,19 +61,34 @@ function occult_element(id){
 // Function show_element
 // show the element passed as parameter (id)
 // setting property display to block
+// Function required to get the screen transitions
 //--------------------------------------------------------------------------
 
 function show_element(id){
-  //se obtiene el id
-  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.display = "block"; //damos un atributo display:block que oculta el div
+  // Gettting id element
+  var el = document.getElementById(id); //el variable defintion
+  el.style.display = "block"; //set el's display attribute to block
 }
 
+//--------------------------------------------------------------------------
+// Function show_element
+// show the element passed as parameter (id)
+// setting property display to block
+// Function required to get the screen transitions
+//--------------------------------------------------------------------------
+
 function view_element(id){
-  //se obtiene el id
-  var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-  el.style.visibility = "visible"; //damos un atributo display:block que oculta el div
+  // Gettting id element
+  var el = document.getElementById(id); //el variable defintion
+  el.style.visibility = "visible"; //set el's visibility attribute to visible
 }
+
+//--------------------------------------------------------------------------
+// Function clean_table
+// Clean all the information stored in the table passed as parameter. Get the table id empty
+// Used when the user logs out and the reloading of the application is needed plus 
+// the initializing of specific html elements
+//--------------------------------------------------------------------------
 
 function clean_table(id){
   tbody = $(id);
