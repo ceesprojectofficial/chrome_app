@@ -82,6 +82,7 @@ function getCheckinData(){
 }
 
 function checkinCallBack(){
+  chrome.storage.local.set({checked_in: true});
   getArrivals();
 }
 

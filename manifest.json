@@ -8,5 +8,5 @@
     }
   },
   "icons": { "16": "cees-16.png", "128": "cees-128.png" },
-  "permissions":["https://80.240.139.49/*", "gcm", "storage", "notifications"]
+  "permissions":["https://80.240.139.49/*", "http://192.168.1.41:3000/*", "gcm", "storage", "notifications", "webview"]
 }

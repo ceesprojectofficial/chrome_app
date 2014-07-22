@@ -33,6 +33,7 @@ function logout(){
       xhr.setRequestHeader('Authentication', token);
     },
   });
+  chrome.storage.local.set({checked_in: false});
   reloadApp();
 }
 
