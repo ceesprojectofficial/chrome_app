@@ -16,7 +16,7 @@ contains functions to modify the visibility of html elements
 //--------------------------------------------------------------------------
 // Function reloadApp
 // 
-// Requiere function to implement logout. 
+// Implements logout. 
 // This fuction restart the application and reinitialize all the variables
 //--------------------------------------------------------------------------
 
@@ -32,9 +32,8 @@ chrome.app.window.create('window.html', {
 }
 //--------------------------------------------------------------------------
 // Function hide_element
-// hide the element passed as parameter (id)
-// setting property display to none
-// Function required to get the screen transitions
+// hide the element given as parameter (id)
+// setting property 'display' to 'none'
 //--------------------------------------------------------------------------
 
 function hide_element(id){
@@ -45,9 +44,8 @@ function hide_element(id){
 
 //--------------------------------------------------------------------------
 // Function occult_element
-// hide the element passed as parameter (id)
-// setting property visibility to hidden
-// Function required to get the screen transitions
+// hide the element given as parameter (id)
+// setting property 'visibility' to 'hidden'
 //--------------------------------------------------------------------------
 
 function occult_element(id){
@@ -59,9 +57,8 @@ function occult_element(id){
 
 //--------------------------------------------------------------------------
 // Function show_element
-// show the element passed as parameter (id)
-// setting property display to block
-// Function required to get the screen transitions
+// show the element given as parameter (id)
+// setting property 'display' to 'block'
 //--------------------------------------------------------------------------
 
 function show_element(id){
@@ -71,10 +68,9 @@ function show_element(id){
 }
 
 //--------------------------------------------------------------------------
-// Function show_element
-// show the element passed as parameter (id)
-// setting property display to block
-// Function required to get the screen transitions
+// Function view_element
+// show the element given as parameter (id)
+// setting property 'display' to 'block'
 //--------------------------------------------------------------------------
 
 function view_element(id){
